@@ -4,12 +4,12 @@
 
 ## ⌨️ Раскладка
 
-![Keymap](build/my_keymap.svg)
+![Keymap](build/my_keymap.png)
 
 > **⇧BCLR** — Nav + Shift + ESC = BT Clear (без Shift = ESC)
 > **⇧BNXT** — Nav + Shift + TAB = BT Next (без Shift = TAB)
 >
-> ⚠️ SVG может быть неактуальным — перегенерируй через [keymap-drawer](https://github.com/caksoylar/keymap-drawer) после изменений в keymap.
+> ⚠️ PNG может быть неактуальным — перегенерируй через [keymap-drawer](https://github.com/caksoylar/keymap-drawer) после изменений в keymap.
 
 ## ⚡ Особенности
 
