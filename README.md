@@ -4,7 +4,7 @@
 
 ## ⌨️ Раскладка
 
-![Keymap](build/my_keymap.png)
+![Keymap](assets/my_keymap.png)
 
 > **⇧BCLR** — Nav + Shift + ESC = BT Clear (без Shift = ESC)
 > **⇧BNXT** — Nav + Shift + TAB = BT Next (без Shift = TAB)
