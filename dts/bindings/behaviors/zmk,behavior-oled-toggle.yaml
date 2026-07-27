@@ -8,3 +8,6 @@ properties:
   central-target:
     type: boolean
     description: Target the central half instead of a peripheral half.
+  all-targets:
+    type: boolean
+    description: Target every half that has a display.
