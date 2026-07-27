@@ -12,12 +12,14 @@
     behaviors {
         oled_l_tog: oled_l_tog {
             compatible = "zmk,behavior-oled-toggle";
+            label = "oled_l_tog";
             #binding-cells = <0>;
             central-target;
         };
 
         oled_r_tog: oled_r_tog {
             compatible = "zmk,behavior-oled-toggle";
+            label = "oled_r_tog";
             #binding-cells = <0>;
         };
 
