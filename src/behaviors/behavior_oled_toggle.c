@@ -22,7 +22,6 @@ static const struct device *const display = DEVICE_DT_GET(DT_CHOSEN(zephyr_displ
 
 struct behavior_oled_toggle_config {
     bool central_target;
-    bool all_targets;
 };
 
 struct behavior_oled_toggle_data {
@@ -61,7 +60,7 @@ static int on_keymap_binding_pressed(struct zmk_behavior_binding *binding,
     struct behavior_oled_toggle_data *data = dev->data;
 
     const bool is_central = !IS_ENABLED(CONFIG_ZMK_SPLIT) || IS_ENABLED(CONFIG_ZMK_SPLIT_ROLE_CENTRAL);
-    if (!config->all_targets && config->central_target != is_central) {
+    if (config->central_target != is_central) {
         return ZMK_BEHAVIOR_OPAQUE;
     }
 
@@ -81,7 +80,7 @@ static int on_keymap_binding_released(struct zmk_behavior_binding *binding,
 static const struct behavior_driver_api behavior_oled_toggle_driver_api = {
     .binding_pressed = on_keymap_binding_pressed,
     .binding_released = on_keymap_binding_released,
-    .locality = BEHAVIOR_LOCALITY_GLOBAL,
+    .locality = BEHAVIOR_LOCALITY_EVENT_SOURCE,
 #if IS_ENABLED(CONFIG_ZMK_BEHAVIOR_METADATA)
     .get_parameter_metadata = zmk_behavior_get_empty_param_metadata,
 #endif
@@ -90,7 +89,6 @@ static const struct behavior_driver_api behavior_oled_toggle_driver_api = {
 #define OLED_TOGGLE_INST(n)                                                                       \
     static const struct behavior_oled_toggle_config oled_toggle_config_##n = {                    \
         .central_target = DT_INST_PROP_OR(n, central_target, false),                              \
-        .all_targets = DT_INST_PROP_OR(n, all_targets, false),                                    \
     };                                                                                             \
     static struct behavior_oled_toggle_data oled_toggle_data_##n;                                 \
     BEHAVIOR_DT_INST_DEFINE(n, behavior_oled_toggle_init, NULL, &oled_toggle_data_##n,             \

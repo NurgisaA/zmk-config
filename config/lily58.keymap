@@ -10,11 +10,17 @@
 
 / {
     behaviors {
-        oled_all_tog: oled_all_tog {
+        oled_l_tog: oled_l_tog {
             compatible = "zmk,behavior-oled-toggle";
-            label = "oled_all_tog";
+            label = "oled_l_tog";
             #binding-cells = <0>;
-            all-targets;
+            central-target;
+        };
+
+        oled_r_tog: oled_r_tog {
+            compatible = "zmk,behavior-oled-toggle";
+            label = "oled_r_tog";
+            #binding-cells = <0>;
         };
 
         bt_clr_shift: bt_clr_shift {
@@ -62,7 +68,7 @@
         navi_layer {
             display-name = "NAVI";
             bindings = <
- &bt_clr_shift  &oled_all_tog &trans       &trans        &trans         &trans                              &trans          &trans          &trans        &trans           &trans  &trans
+ &bt_clr_shift  &oled_l_tog &trans        &trans        &trans         &trans                              &oled_r_tog     &trans          &trans        &trans           &trans  &trans
 &bt_nxt_shift  &kp C_MUTE  &kp C_VOL_DN  &kp C_VOL_UP  &kp C_BRI_DEC  &kp C_BRI_INC                       &kp HOME        &kp PAGE_DOWN   &kp PAGE_UP   &kp END          &trans  &kp PSCRN
 &trans         &trans      &kp C_PREV    &kp C_PP      &kp C_NEXT     &trans                              &kp LEFT_ARROW  &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT_ARROW  &trans  &kp INS
 &trans         &trans      &trans        &trans        &trans         &trans         &kp EQUAL    &trans  &trans          &trans          &trans        &trans           &trans  &trans
