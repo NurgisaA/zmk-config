@@ -1,7 +1,0 @@
-config ZMK_BEHAVIOR_OLED_TOGGLE
-    bool "OLED toggle behavior"
-    default y
-    depends on ZMK_DISPLAY
-    help
-      Adds keymap behaviors that blank or restore the display on a selected
-      half of a split keyboard.
