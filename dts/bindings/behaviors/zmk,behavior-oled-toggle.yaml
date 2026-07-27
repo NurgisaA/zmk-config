@@ -1,0 +1,10 @@
+description: Toggle the OLED display on a selected half of a split keyboard
+
+compatible: "zmk,behavior-oled-toggle"
+
+include: zero_param.yaml
+
+properties:
+  central-target:
+    type: boolean
+    description: Target the central half instead of a peripheral half.
