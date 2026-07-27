@@ -7,10 +7,12 @@
 #include <zephyr/device.h>
 #include <zephyr/devicetree.h>
 #include <zephyr/drivers/display.h>
+#include <zephyr/kernel.h>
 #include <zephyr/logging/log.h>
 
 #include <drivers/behavior.h>
 #include <zmk/behavior.h>
+#include <zmk/display.h>
 
 LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
 
@@ -24,7 +26,31 @@ struct behavior_oled_toggle_config {
 
 struct behavior_oled_toggle_data {
     bool blanked;
+    struct k_work display_work;
 };
+
+static void apply_display_state(struct k_work *work) {
+    struct behavior_oled_toggle_data *data =
+        CONTAINER_OF(work, struct behavior_oled_toggle_data, display_work);
+
+#if DT_HAS_CHOSEN(zephyr_display)
+    if (!device_is_ready(display)) {
+        LOG_ERR("Display device is not ready");
+        return;
+    }
+
+    int err = data->blanked ? display_blanking_on(display) : display_blanking_off(display);
+    if (err) {
+        LOG_ERR("Failed to %s OLED display: %d", data->blanked ? "blank" : "restore", err);
+    }
+#endif
+}
+
+static int behavior_oled_toggle_init(const struct device *dev) {
+    struct behavior_oled_toggle_data *data = dev->data;
+    k_work_init(&data->display_work, apply_display_state);
+    return 0;
+}
 
 static int on_keymap_binding_pressed(struct zmk_behavior_binding *binding,
                                      struct zmk_behavior_binding_event event) {
@@ -38,20 +64,8 @@ static int on_keymap_binding_pressed(struct zmk_behavior_binding *binding,
         return ZMK_BEHAVIOR_OPAQUE;
     }
 
-#if DT_HAS_CHOSEN(zephyr_display)
-    if (!device_is_ready(display)) {
-        LOG_ERR("Display device is not ready");
-        return -ENODEV;
-    }
-
-    int err = data->blanked ? display_blanking_off(display) : display_blanking_on(display);
-    if (err) {
-        LOG_ERR("Failed to %s OLED display: %d", data->blanked ? "restore" : "blank", err);
-        return err;
-    }
-
     data->blanked = !data->blanked;
-#endif
+    k_work_submit_to_queue(zmk_display_work_q(), &data->display_work);
 
     return ZMK_BEHAVIOR_OPAQUE;
 }
@@ -77,7 +91,8 @@ static const struct behavior_driver_api behavior_oled_toggle_driver_api = {
         .central_target = DT_INST_PROP_OR(n, central_target, false),                              \
     };                                                                                             \
     static struct behavior_oled_toggle_data oled_toggle_data_##n;                                 \
-    BEHAVIOR_DT_INST_DEFINE(n, NULL, NULL, &oled_toggle_data_##n, &oled_toggle_config_##n,        \
+    BEHAVIOR_DT_INST_DEFINE(n, behavior_oled_toggle_init, NULL, &oled_toggle_data_##n,             \
+                            &oled_toggle_config_##n,                                                \
                             POST_KERNEL, CONFIG_KERNEL_INIT_PRIORITY_DEFAULT,                     \
                             &behavior_oled_toggle_driver_api);
 
