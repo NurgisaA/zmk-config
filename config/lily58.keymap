@@ -6,6 +6,7 @@
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/ext_power.h>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/pointing.h>
 
@@ -56,11 +57,11 @@
         navi_layer {
             display-name = "NAVI";
             bindings = <
- &bt_clr_shift  &trans      &trans        &trans        &trans         &trans                              &trans          &trans          &trans        &trans           &trans  &trans
-&bt_nxt_shift  &kp C_MUTE  &kp C_VOL_DN  &kp C_VOL_UP  &kp C_BRI_DEC  &kp C_BRI_INC                       &kp HOME        &kp PAGE_DOWN   &kp PAGE_UP   &kp END          &trans  &kp PSCRN
- &caps_word     &trans      &kp C_PREV    &kp C_PP      &kp C_NEXT     &trans                              &kp LEFT_ARROW  &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT_ARROW  &trans  &kp INS
- &trans         &trans      &msc SCRL_LEFT &msc SCRL_DOWN &msc SCRL_UP  &msc SCRL_RIGHT &mkp LCLK    &mkp RCLK    &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_UP   &mmv MOVE_RIGHT &trans          &trans
-                                         &kp DEL       &kp BACKSPACE  &trans         &trans       &trans  &trans          &trans          &trans
+&bt_clr_shift  &trans      &trans          &trans          &trans         &trans                                   &ext_power EP_ON  &trans          &trans        &trans           &trans  &trans
+&bt_nxt_shift  &kp C_MUTE  &kp C_VOL_DN    &kp C_VOL_UP    &kp C_BRI_DEC  &kp C_BRI_INC                            &kp HOME          &kp PAGE_DOWN   &kp PAGE_UP   &kp END          &trans  &kp PSCRN
+&caps_word     &trans      &kp C_PREV      &kp C_PP        &kp C_NEXT     &trans                                   &kp LEFT_ARROW    &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT_ARROW  &trans  &kp INS
+&trans         &trans      &msc SCRL_LEFT  &msc SCRL_DOWN  &msc SCRL_UP   &msc SCRL_RIGHT  &mkp LCLK    &mkp RCLK  &mmv MOVE_LEFT    &mmv MOVE_DOWN  &mmv MOVE_UP  &mmv MOVE_RIGHT  &trans  &trans
+                                           &kp DEL         &kp BACKSPACE  &trans           &trans       &trans     &trans            &trans          &trans
             >;
         };
 
