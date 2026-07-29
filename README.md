@@ -18,6 +18,8 @@
 - **Vim-навигация** — стрелки на HJKL (Nav layer)
 - **Безопасный Bluetooth** — BT Clear и BT Next требуют удержания Shift (mod-morph)
 - **Мультимедиа** — громкость, яркость, управление плеером на Nav layer
+- **Num layer** — удержание правого `Del` открывает цифровой блок `789/456/123/0` под левой рукой; тап по клавише по-прежнему отправляет Delete
+- **Mouse layer** — удержание левого thumb `GUI` открывает мышь: курсор на `HJKL`, скролл на `YUIO`, клики на `;/'/P`
 - **Оптимизация для кода** — `:=`, `()`, `{}`, `<>`, `?`, `|` и `\\` удобно расположены на Code layer
 - **Ctrl+Z/X/C/V** — undo/cut/copy/paste одной рукой на Code layer
 - **Home-row modifiers** — Ctrl/Alt/Shift/GUI доступны с домашнего ряда без ухода к нижнему краю
@@ -34,6 +36,8 @@
 | Debounce | 1ms press / 10ms release |
 | ZMK Studio | включён, без блокировки |
 | Home-row modifiers | balanced hold-tap: 280 мс, prior idle 150 мс |
+| Num layer | hold правого `Del`, tap = Delete |
+| Mouse layer | hold левого thumb `GUI` |
 
 ## 🏗️ Сборка
 
