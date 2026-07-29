@@ -6,6 +6,8 @@
 
 ![Keymap](assets/my_keymap.png)
 
+> **Home-row modifiers** — удержание `A/S/D/F` даёт `GUI/Alt/Ctrl/Shift`, `J/K/L/;` — `Shift/Ctrl/Alt/GUI`; тап печатает букву. Модификатор активируется при сочетании с клавишей противоположной руки.
+>
 > **⇧BCLR** — Nav + Shift + ESC = BT Clear (без Shift = ESC)
 > **⇧BNXT** — Nav + Shift + TAB = BT Next (без Shift = TAB)
 >
@@ -16,8 +18,9 @@
 - **Vim-навигация** — стрелки на HJKL (Nav layer)
 - **Безопасный Bluetooth** — BT Clear и BT Next требуют удержания Shift (mod-morph)
 - **Мультимедиа** — громкость, яркость, управление плеером на Nav layer
-- **Оптимизация для Go** — `:=`, `()`, `{}`, `<>` удобно расположены на Code layer
+- **Оптимизация для кода** — `:=`, `()`, `{}`, `<>`, `?`, `|` и `\\` удобно расположены на Code layer
 - **Ctrl+Z/X/C/V** — undo/cut/copy/paste одной рукой на Code layer
+- **Home-row modifiers** — Ctrl/Alt/Shift/GUI доступны с домашнего ряда без ухода к нижнему краю
 - **ZMK Studio** — можно менять раскладку без перепрошивки (3 reserved слоя)
 - **OLED дисплей** — показывает слой, батарею, WPM
 
@@ -30,6 +33,7 @@
 | BT мощность | +8 dBm (максимум) |
 | Debounce | 1ms press / 10ms release |
 | ZMK Studio | включён, без блокировки |
+| Home-row modifiers | balanced hold-tap: 280 мс, prior idle 150 мс |
 
 ## 🏗️ Сборка
 
