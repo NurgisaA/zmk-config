@@ -18,26 +18,26 @@
 - **Vim-навигация** — стрелки на HJKL (Nav layer)
 - **Безопасный Bluetooth** — BT Clear и BT Next требуют удержания Shift (mod-morph)
 - **Мультимедиа** — громкость, яркость, управление плеером на Nav layer
-- **Num layer** — удержание правого `Del` открывает цифровой блок `789/456/123/0` под левой рукой; тап по клавише по-прежнему отправляет Delete
-- **Mouse layer** — удержание левого thumb `GUI` открывает мышь: курсор на `HJKL`, скролл на `YUIO`, левый/правый/средний клик на `A/S/D`
+- **Num layer** — удержание правого thumb `GUI` открывает цифровой блок `789/456/123/0` под левой рукой; тап по клавише отправляет `GUI`
+- **Mouse layer** — удержание левого thumb `Del` открывает мышь: курсор на `HJKL`, скролл на `YUIO`, левый/правый/средний клик на `A/S/D`
 - **Оптимизация для кода** — `:=`, `()`, `{}`, `<>`, `?`, `|` и `\\` удобно расположены на Code layer
 - **Ctrl+Z/X/C/V** — undo/cut/copy/paste одной рукой на Code layer
 - **Home-row modifiers** — Ctrl/Alt/Shift/GUI доступны с домашнего ряда без ухода к нижнему краю
 - **ZMK Studio** — можно менять раскладку без перепрошивки (3 reserved слоя)
-- **OLED дисплей** — показывает слой, батарею, WPM
+- **OLED дисплей** — Bongo cat слева, Spaceman справа; гаснет через 30 секунд простоя
 
 ## 🔧 Конфигурация
 
 | Параметр | Значение |
 |---|---|
 | Контроллер | nice!nano v2 |
-| Дисплей | OLED (battery, layer, WPM) |
+| Дисплей | OLED: Bongo cat (left), Spaceman (right), auto-off 30 сек |
 | BT мощность | +8 dBm (максимум) |
-| Debounce | 1ms press / 10ms release |
+| Debounce | 1ms press / 5ms release |
 | ZMK Studio | включён, без блокировки |
 | Home-row modifiers | balanced hold-tap: 280 мс, prior idle 150 мс |
-| Num layer | hold правого `Del`, tap = Delete |
-| Mouse layer | hold левого thumb `GUI` |
+| Num layer | hold правого thumb `GUI`, tap = GUI |
+| Mouse layer | hold левого thumb `Del`, tap = Delete |
 
 ## 🏗️ Сборка
 
